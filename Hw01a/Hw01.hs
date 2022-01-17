@@ -26,6 +26,7 @@ g = Map.fromList [(a, Set.fromList [b,c]),
                   (e, Set.fromList [a, c])]
 
 -- Put your functions here --------------------
+
 -- "Problem 1: natural recursion --------------
 sumUp :: [Int] -> Int
 -- if the list if empty, just return 0
@@ -64,13 +65,30 @@ append [] (y:ys) = (y:ys)
 
 
 -- "Problem 2: data types --------------
-
 data IntTree = Empty | Node IntTree Int IntTree deriving (Eq, Show)
 
 isLeaf :: IntTree -> Bool
+-- If the tree is empty, we know it's a leaf
 isLeaf Empty = True
-isLeaf (Node l x r) = False
+-- If botht the left and right nodes are empty, we know it's a leaf
+isLeaf (Node l x r) = if l == Empty && r == Empty
+                      then True
+                      -- else we know it's not a leaf
+                      else
+                      False 
 
+
+sumTree :: IntTree -> Int
+treeSum = 0
+-- If the tree is empty, return a the number
+sumTree Empty = treeSum
+-- add the node's value + the values of the left and right nodes' values
+sumTree (Node l x r) = treeSum + x + sumTree l + sumTree r 
+
+
+fringe :: IntTree -> [Int]
+fringe Empty = [2]
+fringe (Node l x r) = 
 
 -- "Problem 3:binary search trees" -----
 
@@ -125,11 +143,15 @@ main = do
     putStr "Should be True: "
     print $ isLeaf (Node Empty 3 Empty)
 
---    putStr "Should be False: "
---    print $ isLeaf (Node (Node Empty 1 Empty) 2 Empty)
+    putStr "Should be False: "
+    print $ isLeaf (Node (Node Empty 1 Empty) 2 Empty)
 
---    putStr "Should be 10: "
---    print $ sumTree (Node (Node Empty 1 Empty) 3 (Node Empty 2 (Node Empty 4 Empty)))
+    -- I added this test
+    putStr "Should be 3: "
+    print $ sumTree (Node Empty 3 Empty)
+
+    putStr "Should be 10: "
+    print $ sumTree (Node (Node Empty 1 Empty) 3 (Node Empty 2 (Node Empty 4 Empty)))
 
 --    putStr "Should be [2,7]: "
 --    print $ fringe (Node (Node Empty 1 (Node Empty 2 Empty))
