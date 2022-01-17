@@ -87,9 +87,11 @@ sumTree (Node l x r) = treeSum + x + sumTree l + sumTree r
 
 
 fringe :: IntTree -> [Int]
-fringe Empty = [2]
-fringe (Node l x r) = 
-
+fringeList = []
+fringe Empty = fringeList
+fringe (Node l x r) = if isLeaf (Node l x r)
+                      then [5]
+                      else [10]
 -- "Problem 3:binary search trees" -----
 
 
@@ -153,10 +155,10 @@ main = do
     putStr "Should be 10: "
     print $ sumTree (Node (Node Empty 1 Empty) 3 (Node Empty 2 (Node Empty 4 Empty)))
 
---    putStr "Should be [2,7]: "
---    print $ fringe (Node (Node Empty 1 (Node Empty 2 Empty))
---                          5
---                          (Node (Node Empty 7 Empty) 10 Empty))
+    putStr "Should be [2,7]: "
+    print $ fringe (Node (Node Empty 1 (Node Empty 2 Empty))
+                          5
+                          (Node (Node Empty 7 Empty) 10 Empty))
 
     putStrLn "\nProblem 3: binary search trees --------------------------------\n"
 
