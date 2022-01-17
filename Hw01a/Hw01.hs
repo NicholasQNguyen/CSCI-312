@@ -80,6 +80,15 @@ isLeaf (Node l x r) = False
 
 -- "Problem 5: defining higher-order functions"
 
+
+-- "Problem 6: Maybe and Either" -------
+
+
+-- "Problem 7: Creating polymorphic datatypes"
+
+
+-- "Problem 8: maps and sets" ----------
+
  
 -- Tests ----------------------------------------
 
