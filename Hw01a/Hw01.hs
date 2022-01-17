@@ -60,8 +60,11 @@ incBy num (x:xs) = returnedList3 ++ [x + num] ++ incBy num xs
 
 
 append :: [Int] -> [Int] -> [Int]
+-- account for if one of the lists is empty
 append (x:xs) [] = (x:xs)
 append [] (y:ys) = (y:ys)
+
+
 
 
 data IntTree = Empty | Node IntTree Int IntTree deriving (Eq, Show)
