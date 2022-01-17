@@ -26,7 +26,7 @@ g = Map.fromList [(a, Set.fromList [b,c]),
                   (e, Set.fromList [a, c])]
 
 -- Put your functions here --------------------
--- https://www.quora.com/What-does-x-xs-mean-in-Haskell
+-- "Problem 1: natural recursion --------------
 sumUp :: [Int] -> Int
 -- if the list if empty, just return 0
 sumUp []     = 0
@@ -43,8 +43,6 @@ evens [] = returnedList1
 evens (x:xs) =  if even x then returnedList1 ++ [x] ++ evens xs
                 -- if the number is odd, then skip over it and check the rest of the list
                 else evens xs
-
-
 
 incAll :: [Int] -> [Int]
 returnedList2 = []
@@ -65,7 +63,7 @@ append (x:xs) [] = (x:xs)
 append [] (y:ys) = (y:ys)
 
 
-
+-- "Problem 2: data types --------------
 
 data IntTree = Empty | Node IntTree Int IntTree deriving (Eq, Show)
 
@@ -101,11 +99,11 @@ main = do
 
     putStrLn "\nProblem 2: data types -----------------------------------------\n"
 
---    putStr "Should be True: "
---    print $ isLeaf Empty
+    putStr "Should be True: "
+    print $ isLeaf Empty
 
---    putStr "Should be True: "
---    print $ isLeaf (Node Empty 3 Empty)
+    putStr "Should be True: "
+    print $ isLeaf (Node Empty 3 Empty)
 
 --    putStr "Should be False: "
 --    print $ isLeaf (Node (Node Empty 1 Empty) 2 Empty)
