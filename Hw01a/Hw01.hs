@@ -69,7 +69,18 @@ data IntTree = Empty | Node IntTree Int IntTree deriving (Eq, Show)
 
 isLeaf :: IntTree -> Bool
 isLeaf Empty = True
-isLeaf (Node l x r) = False 
+isLeaf (Node l x r) = False
+
+
+-- "Problem 3:binary search trees" -----
+
+
+-- "Problem 4: map and filter" ---------
+
+
+-- "Problem 5: defining higher-order functions"
+
+ 
 -- Tests ----------------------------------------
 
 main = do
