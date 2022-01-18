@@ -91,9 +91,10 @@ fringeList = []
 fringe Empty = fringeList
 fringe (Node l x r) = if isLeaf (Node l x r)
                       then fringeList ++ [x]
-                      else 
+                      else
                       fringe l
-                      fringe r
+
+
 -- "Problem 3:binary search trees" -----
 
 
