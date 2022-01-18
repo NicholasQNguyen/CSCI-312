@@ -1,4 +1,5 @@
 {--
+:60
   CSCI 312 Homework #1
 
   Adpated from https://cs.pomona.edu/~michael/courses/csci131s18/hw/Hw01.html
@@ -54,13 +55,10 @@ incBy num (x:xs) = [x + num] ++ incBy num xs
 
 
 append :: [Int] -> [Int] -> [Int]
+returnedList = []
 -- account for if one of the lists is empty
 append (x:xs) [] = (x:xs)
-append [] (y:ys) = (y:y)
--- https://wiki.haskell.org/How_to_work_on_lists
-returnedList = []
-append (x:xs) (y:ys) = x : returnedList 
-                       
+append [] (y:ys) = (y:ys)
 
 
 -- "Problem 2: data types --------------
