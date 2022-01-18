@@ -79,12 +79,10 @@ isLeaf (Node l x r) = if l == Empty && r == Empty
 
 
 sumTree :: IntTree -> Int
-treeSum = 0
 -- If the tree is empty, return a the number
-sumTree Empty = treeSum
+sumTree Empty = 0
 -- add the node's value + the values of the left and right nodes' values
-sumTree (Node l x r) = treeSum + x + sumTree l + sumTree r 
-
+sumTree (Node l x r) = x + sumTree l + sumTree r
 
 fringe :: IntTree -> [Int]
 fringeList = []
@@ -162,6 +160,10 @@ main = do
     print $ fringe (Node (Node Empty 1 (Node Empty 2 Empty))
                           5
                           (Node (Node Empty 7 Empty) 10 Empty))
+
+    -- I added this test
+    putStr "Should be []:"
+    print $ fringe (Empty)    
 
     putStrLn "\nProblem 3: binary search trees --------------------------------\n"
 
