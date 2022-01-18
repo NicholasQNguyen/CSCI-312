@@ -30,38 +30,34 @@ g = Map.fromList [(a, Set.fromList [b,c]),
 -- "Problem 1: natural recursion --------------
 sumUp :: [Int] -> Int
 -- if the list if empty, just return 0
-sumUp []     = 0
+sumUp [] = 0
 -- if it's not empty, add the head and the sum of the rest of the list
 sumUp (x:xs) = x + sumUp xs
 
 
 evens :: [Int] -> [Int]
--- establish a list to be returned
-returnedList1 = []
 -- if the list is empty, just return the list
-evens [] = returnedList1
+evens [] = []
 -- if it's not empty, if the number is even, append it and run evens on the rest of the list
-evens (x:xs) =  if even x then returnedList1 ++ [x] ++ evens xs
-                -- if the number is odd, then skip over it and check the rest of the list
-                else evens xs
+evens (x:xs) = if even x then [x] ++ evens xs
+               -- if the number is odd, then skip over it and check the rest of the list
+               else evens xs
 
 incAll :: [Int] -> [Int]
-returnedList2 = []
-incAll [] = returnedList2
-incAll (x:xs) = returnedList2 ++ [x + 1] ++ incAll xs
-
+incAll [] = []
+incAll(x:xs) = [x + 1] ++ incAll xs
 
 incBy :: Int -> [Int] -> [Int]
-returnedList3 = []
 -- if we've hit the end of the list, just return it
-incBy num [] = returnedList3
-incBy num (x:xs) = returnedList3 ++ [x + num] ++ incBy num xs
+incBy num [] = []
+incBy num (x:xs) = [x + num] ++ incBy num xs
 
 
 append :: [Int] -> [Int] -> [Int]
 -- account for if one of the lists is empty
 append (x:xs) [] = (x:xs)
 append [] (y:ys) = (y:ys)
+append (x:xs) (y:ys) = (x:xs) ++ (y:ys)
 
 
 -- "Problem 2: data types --------------
@@ -85,10 +81,9 @@ sumTree Empty = 0
 sumTree (Node l x r) = x + sumTree l + sumTree r
 
 fringe :: IntTree -> [Int]
-fringeList = []
-fringe Empty = fringeList
+fringe Empty = []
 fringe (Node l x r) = if isLeaf (Node l x r)
-                      then fringeList ++ [x]
+                      then [] ++ [x]
                       else
                       fringe l
 
@@ -135,8 +130,8 @@ main = do
     putStr "Should be [1,2,3]: "
     print $ append [1,2,3] []
 
---    putStr "Should be [1,2,3,4,5,6]: "
---    print $ append [1,2,3] [4,5,6]
+    putStr "Should be [1,2,3,4,5,6]: "
+    print $ append [1,2,3] [4,5,6]
 
     putStrLn "\nProblem 2: data types -----------------------------------------\n"
 
@@ -164,6 +159,10 @@ main = do
     -- I added this test
     putStr "Should be []:"
     print $ fringe (Empty)    
+
+    -- I added this test
+    putStr "Should be [2]:"
+    print $ fringe(Node Empty 2 Empty)
 
     putStrLn "\nProblem 3: binary search trees --------------------------------\n"
 
