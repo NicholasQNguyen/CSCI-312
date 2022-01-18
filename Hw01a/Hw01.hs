@@ -56,8 +56,11 @@ incBy num (x:xs) = [x + num] ++ incBy num xs
 append :: [Int] -> [Int] -> [Int]
 -- account for if one of the lists is empty
 append (x:xs) [] = (x:xs)
-append [] (y:ys) = (y:ys)
-append (x:xs) (y:ys) = (x:xs) ++ (y:ys)
+append [] (y:ys) = (y:y)
+-- https://wiki.haskell.org/How_to_work_on_lists
+returnedList = []
+append (x:xs) (y:ys) = x : returnedList 
+                       
 
 
 -- "Problem 2: data types --------------
