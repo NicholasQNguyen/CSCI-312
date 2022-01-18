@@ -71,8 +71,7 @@ isLeaf Empty = True
 isLeaf (Node l x r) = if l == Empty && r == Empty
                       then True
                       -- else we know it's not a leaf
-                      else
-                      False 
+                      else False 
 
 
 sumTree :: IntTree -> Int
@@ -91,6 +90,13 @@ fringe (Node l x r) = if isLeaf (Node l x r)
 
 -- "Problem 3:binary search trees" -----
 
+-- Helper function used in isBST to get the Int value out of a node 
+getValue :: IntTree -> Int
+getValue (Node l x r) = x
+
+isBST :: IntTree -> Bool
+isBST Empty = True
+isBsT (Node l x r) = False 
 
 -- "Problem 4: map and filter" ---------
 
@@ -131,8 +137,8 @@ main = do
     putStr "Should be [1,2,3]: "
     print $ append [1,2,3] []
 
-    putStr "Should be [1,2,3,4,5,6]: "
-    print $ append [1,2,3] [4,5,6]
+    -- putStr "Should be [1,2,3,4,5,6]: "
+    -- print $ append [1,2,3] [4,5,6]
 
     putStrLn "\nProblem 2: data types -----------------------------------------\n"
 
@@ -166,6 +172,10 @@ main = do
     print $ fringe(Node Empty 2 Empty)
 
     putStrLn "\nProblem 3: binary search trees --------------------------------\n"
+    
+    -- I added this test
+    putStr"Should be 4: "
+    print $ getValue (Node Empty 4 Empty)
 
 --    putStr "Should be True: "
 --    print $ isBST (Node (Node Empty 2 Empty)  4 (Node Empty 5 Empty))
