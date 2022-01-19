@@ -94,21 +94,71 @@ fringe (Node l x r) = if isLeaf (Node l x r)
 getValue :: IntTree -> Int
 getValue (Node l x r) = x
 
+
 isBST :: IntTree -> Bool
 isBST Empty = True
+-- Check the left node's value, if it's less then the current one, keep checking
 isBsT (Node l x r) = False 
 
+
 -- "Problem 4: map and filter" ---------
+-- TODO Finish these functions
+sumUp' :: [Int] -> Int
+sumUp' l = 534567890
+
+
+evens' :: [Int] -> [Int]
+evens' l = [12345678]
+
+
+incAll' :: [Int] -> [Int]
+incAll' l = [0987654]
+
+
+incBy' :: Int -> [Int] -> [Int]
+incBy' n l = [12345678]
 
 
 -- "Problem 5: defining higher-order functions"
+{--
+mapl :: (a -> b) -> [a] -> [b]
+mapl = ["WRONG"]
+
+
+filterl :: (a -> Bool) -> [a] -> [a]
+filterl = ["ASDFGHJ"]
+--}
 
 
 -- "Problem 6: Maybe and Either" -------
+-- TODO finish
+{--
+data Maybe Float = Just Float | Nothing
 
+
+sqrt' :: Float -> Maybe Float
+sqrt' x = if x<0
+          then Nothing
+          else sqrt(x)
+
+
+data Either a b = Left a | Right b
+
+
+div' :: Float -> Float -> Hw01.Either String Float
+div' x y = if y == 0
+           then "PROBLEM"
+           else x/y
+--}
 
 -- "Problem 7: Creating polymorphic datatypes"
 
+swap :: (a,b) -> (b,a)
+swap (x,y) = (y,x)
+
+
+pairUp :: [a] -> [b] -> [(a,b)]
+pairUp (x:xs) (y:ys) = (x,y) ++ pairUp (xs ys)
 
 -- "Problem 8: maps and sets" ----------
 
@@ -183,7 +233,7 @@ main = do
 --    putStr "Should be False: "
 --    print $ isBST (Node (Node Empty 5 Empty)  4 (Node Empty 2 Empty))
 
---    putStrLn "\nProblem 4: map and filter -------------------------------------\n"
+    putStrLn "\nProblem 4: map and filter -------------------------------------\n"
 
 --    putStr "Should be 6: "
 --    print $ sumUp' [1,2,3]
@@ -197,7 +247,7 @@ main = do
 --    putStr "Should be 3,4,5,6,7,8,9,10,11]: "
 --    print $ incBy' 2 [1,2,3,4,5,6,7,8,9]
 
---    putStrLn "\nProblem 5: defining higher-order functions --------------------\n"
+    putStrLn "\nProblem 5: defining higher-order functions --------------------\n"
 
 --    putStr "Should be [1,4,16,25]: "
 --    print $ map1 (\x -> x * x) [1,2,3,4,5]
@@ -212,8 +262,8 @@ main = do
 
     putStrLn "\nProblem 7: Creating polymorphic data types ---------------------\n"
 
---    putStr "Should be (\"hello\", 3): "
---    print $ swap (3, "hello") 
+    putStr "Should be (\"hello\", 3): "
+    print $ swap (3, "hello") 
 
 --    putStr "Should be [(0,1),(2,3),(4,5),(6,7),(8,9)]: "
 --    print $ pairUp [0,2,4,6,8] [1,3,5,7,9]
