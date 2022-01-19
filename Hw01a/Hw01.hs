@@ -103,27 +103,31 @@ isBsT (Node l x r) = False
 
 
 -- "Problem 4: map and filter" ---------
--- TODO Finish these functions
+-- https://stackoverflow.com/questions/1757740/how-does-foldr-work
 sumUp' :: [Int] -> Int
-sumUp' l = 534567890
-
+sumUp' l = foldr(+) 0 l
 
 evens' :: [Int] -> [Int]
-evens' l = [12345678]
+evens' l = filter (even) l 
 
 
+incInt :: Int -> Int -> Int
+incInt n k = n + k
+
+
+-- http://zvon.org/other/haskell/Outputprelude/map_f.html
 incAll' :: [Int] -> [Int]
-incAll' l = [0987654]
+incAll' l = map (incInt 1) l
 
 
 incBy' :: Int -> [Int] -> [Int]
-incBy' n l = [12345678]
+incBy' n l = map (incInt n) l 
 
 
 -- "Problem 5: defining higher-order functions"
-{--
+
 mapl :: (a -> b) -> [a] -> [b]
-mapl = ["WRONG"]
+mapl (a -> b) (x:xs) = 
 
 
 filterl :: (a -> Bool) -> [a] -> [a]
@@ -249,17 +253,17 @@ main = do
 
     putStrLn "\nProblem 4: map and filter -------------------------------------\n"
 
---    putStr "Should be 6: "
---    print $ sumUp' [1,2,3]
+    putStr "Should be 6: "
+    print $ sumUp' [1,2,3]
 
---    putStr "Should be [2,4,6,8]: "
---    print $ evens' [1,2,3,4,5,6,7,8,9]
+    putStr "Should be [2,4,6,8]: "
+    print $ evens' [1,2,3,4,5,6,7,8,9]
 
---    putStr "Should be [2,3,4,5,6,7,8,9,10]: "
---    print $ incAll' [1,2,3,4,5,6,7,8,9]
+    putStr "Should be [2,3,4,5,6,7,8,9,10]: "
+    print $ incAll' [1,2,3,4,5,6,7,8,9]
 
---    putStr "Should be 3,4,5,6,7,8,9,10,11]: "
---    print $ incBy' 2 [1,2,3,4,5,6,7,8,9]
+    putStr "Should be 3,4,5,6,7,8,9,10,11]: "
+    print $ incBy' 2 [1,2,3,4,5,6,7,8,9]
 
     putStrLn "\nProblem 5: defining higher-order functions --------------------\n"
 
