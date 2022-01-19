@@ -59,6 +59,7 @@ returnedList = []
 -- account for if one of the lists is empty
 append (x:xs) [] = (x:xs)
 append [] (y:ys) = (y:ys)
+append (x:xs) (y:ys) = returnedList
 
 
 -- "Problem 2: data types --------------
