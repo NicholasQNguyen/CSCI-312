@@ -53,7 +53,7 @@ incBy :: Int -> [Int] -> [Int]
 incBy num [] = []
 incBy num (x:xs) = [x + num] ++ incBy num xs
 
-
+-- TODO finish
 append :: [Int] -> [Int] -> [Int]
 returnedList = []
 -- account for if one of the lists is empty
@@ -75,7 +75,7 @@ isLeaf (Node l x r) = if l == Empty && r == Empty
 
 
 sumTree :: IntTree -> Int
--- If the tree is empty, return a the number
+-- If the tree is empty, return the number
 sumTree Empty = 0
 -- add the node's value + the values of the left and right nodes' values
 sumTree (Node l x r) = x + sumTree l + sumTree r
@@ -156,12 +156,25 @@ div' x y = if y == 0
 swap :: (a,b) -> (b,a)
 swap (x,y) = (y,x)
 
-
+-- TODO finish
+{--
 pairUp :: [a] -> [b] -> [(a,b)]
-pairUp (x:xs) (y:ys) = (x,y) ++ pairUp (xs ys)
+pairUp (x:xs) (y:ys) = [(x,y)] ++ [pairUp (xs ys)]
+--}
+
 
 -- "Problem 8: maps and sets" ----------
+-- TODO yea like not even close
+{--
+neighbors :: DAG -> Node -> Set.Set Node
 
+
+any' :: Set.Set Bool -> Bool
+
+
+hasPath :: DAG -> Node -> Node -> Bool
+hasPath d nodeA nodeB = False 
+--}
  
 -- Tests ----------------------------------------
 
