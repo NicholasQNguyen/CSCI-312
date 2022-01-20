@@ -53,6 +53,7 @@ incBy :: Int -> [Int] -> [Int]
 incBy num [] = []
 incBy num (x:xs) = [x + num] ++ incBy num xs
 
+
 -- TODO finish
 append :: [Int] -> [Int] -> [Int]
 returnedList = []
@@ -63,6 +64,7 @@ append (x:xs) (y:ys) = returnedList
 
 
 -- "Problem 2: data types --------------
+
 data IntTree = Empty | Node IntTree Int IntTree deriving (Eq, Show)
 
 isLeaf :: IntTree -> Bool
@@ -81,6 +83,7 @@ sumTree Empty = 0
 -- add the node's value + the values of the left and right nodes' values
 sumTree (Node l x r) = x + sumTree l + sumTree r
 
+--TODO complete
 fringe :: IntTree -> [Int]
 fringe Empty = []
 fringe (Node l x r) = if isLeaf (Node l x r)
@@ -103,6 +106,7 @@ isBsT (Node l x r) = False
 
 
 -- "Problem 4: map and filter" ---------
+
 -- https://stackoverflow.com/questions/1757740/how-does-foldr-work
 sumUp' :: [Int] -> Int
 sumUp' l = foldr(+) 0 l
@@ -126,16 +130,19 @@ incBy' n l = map (incInt n) l
 
 -- "Problem 5: defining higher-order functions"
 
-mapl :: (a -> b) -> [a] -> [b]
-mapl (a -> b) (x:xs) = 
+map1 :: (a -> b) -> [a] -> [b]
+map1 function [] = []
+map1 function (x:xs) = [function(x)] ++ map1 (function) (xs)
 
-
+-- TODO finish
+{--
 filterl :: (a -> Bool) -> [a] -> [a]
 filterl = ["ASDFGHJ"]
 --}
 
 
 -- "Problem 6: Maybe and Either" -------
+
 -- TODO finish
 {--
 data Maybe Float = Just Float | Nothing
@@ -162,15 +169,22 @@ swap :: (a,b) -> (b,a)
 swap (x,y) = (y,x)
 
 -- TODO finish
+
 {--
 pairUp :: [a] -> [b] -> [(a,b)]
-pairUp (x:xs) (y:ys) = [(x,y)] ++ [pairUp (xs ys)]
+pairUp (x:xs) (y:ys) = [(x,y)] ++ (pairUp(xs ys))
 --}
+
+splitUp :: [(a, b)] -> ([a], [b])
+splitUp [] = ([], [])
+splitUp ((x1, x2):xs) = let split = (splitUp xs) 
+                        in (x1:(fst split), x2:(snd split))
 
 
 -- "Problem 8: maps and sets" ----------
--- TODO yea like not even close
 {--
+-- TODO yea like not even close
+
 neighbors :: DAG -> Node -> Set.Set Node
 
 
@@ -205,8 +219,8 @@ main = do
     putStr "Should be [1,2,3]: "
     print $ append [1,2,3] []
 
-    -- putStr "Should be [1,2,3,4,5,6]: "
-    -- print $ append [1,2,3] [4,5,6]
+--    putStr "Should be [1,2,3,4,5,6]: "
+--    print $ append [1,2,3] [4,5,6]
 
     putStrLn "\nProblem 2: data types -----------------------------------------\n"
 
@@ -267,8 +281,8 @@ main = do
 
     putStrLn "\nProblem 5: defining higher-order functions --------------------\n"
 
---    putStr "Should be [1,4,16,25]: "
---    print $ map1 (\x -> x * x) [1,2,3,4,5]
+    putStr "Should be [1,4,16,25]: "
+    print $ map1 (\x -> x * x) [1,2,3,4,5]
 
 --    putStr "Should be [1,3,5,7,9]: "
 --    print $ filter1 odd [0,1,2,3,4,5,6,7,8,9]
@@ -286,8 +300,8 @@ main = do
 --    putStr "Should be [(0,1),(2,3),(4,5),(6,7),(8,9)]: "
 --    print $ pairUp [0,2,4,6,8] [1,3,5,7,9]
 
---    putStr "Should be ([0,2,4,6,8],[1,3,5,7,9]): "
---    print $ splitUp [(0,1),(2,3),(4,5),(6,7),(8,9)]
+    putStr "Should be ([0,2,4,6,8],[1,3,5,7,9]): "
+    print $ splitUp [(0,1),(2,3),(4,5),(6,7),(8,9)]
 
 --    putStr "Should be (15, 5): "
 --    print $ sumAndLength [1,2,3,4,5]
