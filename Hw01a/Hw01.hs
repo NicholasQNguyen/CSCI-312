@@ -1,4 +1,4 @@
-{--
+{---
 :60
   CSCI 312 Homework #1
 
@@ -134,10 +134,12 @@ map1 function [] = []
 map1 function (x:xs) = [function(x)] ++ map1 (function) (xs)
 
 
--- TODO finish
-filterl :: (a -> Bool) -> [a] -> [a]
-filterl = ["ASDFGHJ"]
-
+filter1 :: (a -> Bool) -> [a] -> [a]
+filter1 function [] = []
+filter1 function (x:xs) = if function (x) 
+                          then [x] ++ filter1 function xs
+                          else
+                          filter1 function xs
 
 
 -- "Problem 6: Maybe and Either" -------
@@ -281,8 +283,8 @@ main = do
     putStr "Should be [1,4,16,25]: "
     print $ map1 (\x -> x * x) [1,2,3,4,5]
 
---    putStr "Should be [1,3,5,7,9]: "
---    print $ filter1 odd [0,1,2,3,4,5,6,7,8,9]
+    putStr "Should be [1,3,5,7,9]: "
+    print $ filter1 odd [0,1,2,3,4,5,6,7,8,9]
 
     putStrLn "\nProblem 6: Maybe and Either ------------------------------------\n"
 
