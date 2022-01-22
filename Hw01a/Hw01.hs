@@ -138,23 +138,21 @@ filter1 :: (a -> Bool) -> [a] -> [a]
 filter1 function [] = []
 filter1 function (x:xs) = if function (x) 
                           then [x] ++ filter1 function xs
-                          else
-                          filter1 function xs
+                          else filter1 function xs
 
 
 -- "Problem 6: Maybe and Either" -------
 
 -- TODO finish
 {--
-data Maybe Float = Just Float | Nothing
-
+data Maybe Float = Nothing | Just Float
 
 sqrt' :: Float -> Maybe Float
 sqrt' x = if x<0
           then Nothing
           else sqrt(x)
-
-
+--}
+{--
 data Either a b = Left a | Right b
 
 
@@ -169,19 +167,21 @@ div' x y = if y == 0
 swap :: (a,b) -> (b,a)
 swap (x,y) = (y,x)
 
--- TODO finish
 
-{--
 pairUp :: [a] -> [b] -> [(a,b)]
-pairUp (x:xs) (y:ys) = [(x,y)] ++ (pairUp(xs ys))
---}
+pairUp [] [] = []
+pairUp (x:xs) [] = []
+pairUp [] (y:ys) = []
+pairUp (x:xs) (y:ys) = [(x,y)] ++ pairUp xs ys
+
 
 splitUp :: [(a, b)] -> ([a], [b])
 splitUp [] = ([], [])
 splitUp ((x1, x2):xs) = let split = (splitUp xs) 
                         in (x1:(fst split), x2:(snd split))
 
--- TODO finish
+
+-- TODO ? maybe need to change this but prob won't bother
 sumAndLength :: [Int] -> (Int,Int)
 sumAndLength l = ((foldr(+) 0 l), length l)
 
@@ -296,8 +296,8 @@ main = do
     putStr "Should be (\"hello\", 3): "
     print $ swap (3, "hello") 
 
---    putStr "Should be [(0,1),(2,3),(4,5),(6,7),(8,9)]: "
---    print $ pairUp [0,2,4,6,8] [1,3,5,7,9]
+    putStr "Should be [(0,1),(2,3),(4,5),(6,7),(8,9)]: "
+    print $ pairUp [0,2,4,6,8] [1,3,5,7,9]
 
     putStr "Should be ([0,2,4,6,8],[1,3,5,7,9]): "
     print $ splitUp [(0,1),(2,3),(4,5),(6,7),(8,9)]
