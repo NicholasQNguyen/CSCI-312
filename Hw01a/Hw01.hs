@@ -144,23 +144,21 @@ filter1 function (x:xs) = if function (x)
 -- "Problem 6: Maybe and Either" -------
 
 -- TODO finish
-{--
-data Maybe Float = Nothing | Just Float
+
+-- data Maybe Float = Nothing | Just Float
 
 sqrt' :: Float -> Maybe Float
 sqrt' x = if x<0
           then Nothing
-          else sqrt(x)
---}
-{--
+          else Just (sqrt(x))
+
+
 data Either a b = Left a | Right b
 
-
 div' :: Float -> Float -> Hw01.Either String Float
-div' x y = if y == 0
-           then "PROBLEM"
-           else x/y
---}
+div' x 0 = Hw01.Left "Error: Division by 0"
+div' x y = Hw01.Right (x/y)
+
 
 -- "Problem 7: Creating polymorphic datatypes"
 
@@ -288,8 +286,8 @@ main = do
 
     putStrLn "\nProblem 6: Maybe and Either ------------------------------------\n"
 
---    putStr "Should be [0.0,1.0,2.0,3.0]: "
---    print $ mapMaybe sqrt' [0,-1,1,-4,4,9,-9]
+    putStr "Should be [0.0,1.0,2.0,3.0]: "
+    print $ mapMaybe sqrt' [0,-1,1,-4,4,9,-9]
 
     putStrLn "\nProblem 7: Creating polymorphic data types ---------------------\n"
 
@@ -305,13 +303,13 @@ main = do
     putStr "Should be (15, 5): "
     print $ sumAndLength [1,2,3,4,5]
 
---    case div' 1 0 of
---      Right val -> print $ val
---      Left  msg -> putStrLn msg
+    case div' 1 0 of
+      Hw01.Right val -> print $ val
+      Hw01.Left  msg -> putStrLn msg
 
---    case div' 1 2 of
---      Right val -> print $ val
---      Left  msg -> putStrLn msg
+    case div' 1 2 of
+      Hw01.Right val -> print $ val
+      Hw01.Left  msg -> putStrLn msg
 
     putStrLn "\nProblem 8: maps and sets --------------------------------------\n"
 
